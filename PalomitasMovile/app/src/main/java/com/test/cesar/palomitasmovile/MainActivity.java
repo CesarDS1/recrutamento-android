@@ -5,9 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.test.cesar.palomitasmovile.Utils.CustomRequestListener;
 import com.test.cesar.palomitasmovile.Utils.NetworkManager;
 import com.test.cesar.palomitasmovile.adapters.SeasonAdapter;
@@ -26,15 +26,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         toolbar=(Toolbar)findViewById(R.id.toolbar);
-
-        mRecyclerView=(RecyclerView)findViewById(R.id.my_recycler_view);
-
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-
-
+        mRecyclerView=(RecyclerView)findViewById(R.id.my_recycler_view);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
@@ -60,13 +55,12 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
-
         NetworkManager.getInstance().getEpisodesFromSeason( new CustomRequestListener<ArrayList<Episode>>()
         {
             @Override
             public void onSuccess(ArrayList<Episode> listEpisodes)
             {
+                hideLoading();
                 if (listEpisodes.size()!=0)
                 {
                     mAdapter = new SeasonAdapter(listEpisodes);
@@ -76,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onError(String string)
             {
+                hideLoading();
                 if (!string.isEmpty())
                 {
                     Toast toast = Toast.makeText(MainActivity.this, string, Toast.LENGTH_LONG);
@@ -83,11 +78,11 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
-
-
     }
 
-
+public void hideLoading()
+{
+    findViewById(R.id.loadingPanel).setVisibility(View.GONE);
+}
 
 }
