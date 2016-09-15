@@ -18,13 +18,9 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-
     private RecyclerView mRecyclerView;
     private Toolbar toolbar;
     private TextView ratingTv;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
