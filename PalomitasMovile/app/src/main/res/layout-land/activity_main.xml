@@ -58,7 +58,6 @@
             <RelativeLayout
                 android:background="@android:color/darker_gray"
                 android:layout_width="match_parent"
-                android:orientation="vertical"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/fab_margin">
 
@@ -68,6 +67,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
+                    android:layout_marginBottom="@dimen/fab_margin"
                     />
 
                 <TextView
@@ -83,7 +83,6 @@
                     android:background="@drawable/season_rating" />
 
                 <TextView
-                    android:layout_marginTop="@dimen/fab_margin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/image_serie"

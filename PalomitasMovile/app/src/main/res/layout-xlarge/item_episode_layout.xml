@@ -10,7 +10,6 @@
         android:layout_height="wrap_content">
 
         <RelativeLayout
-            android:id="@+id/relativelayout"
             android:layout_marginTop="@dimen/fab_margin"
             android:layout_marginRight="@dimen/fab_margin"
             android:layout_marginLeft="@dimen/item_image_margin"
